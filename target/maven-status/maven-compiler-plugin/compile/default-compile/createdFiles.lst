@@ -1,0 +1,10 @@
+ifrs/dev/model/Anuncio.class
+ifrs/dev/ws/UsuarioWS.class
+ifrs/dev/ws/AnuncioWS.class
+ifrs/dev/model/Usuario.class
+ifrs/dev/ws/MensagemWS.class
+ifrs/dev/model/Manga.class
+FakeRepository.class
+META-INF/panache-archive.marker
+ifrs/dev/model/Mensagem.class
+ifrs/dev/ws/MangaWS.class

@@ -4,6 +4,8 @@ This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
 If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
 
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=amfabian_vvs-crud-projeto)](https://sonarcloud.io/summary/new_code?id=amfabian_vvs-crud-projeto)
+
 ## Running the application in dev mode
 
 You can run your application in dev mode that enables live coding using:

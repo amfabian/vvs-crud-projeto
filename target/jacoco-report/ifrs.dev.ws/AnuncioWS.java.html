@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AnuncioWS.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">quarkus-application</a> &gt; <a href="index.source.html" class="el_package">ifrs.dev.ws</a> &gt; <span class="el_source">AnuncioWS.java</span></div><h1>AnuncioWS.java</h1><pre class="source lang-java linenums">package ifrs.dev.ws;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+import javax.ws.rs.BadRequestException;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+import ifrs.dev.model.Anuncio;
+import ifrs.dev.model.Manga;
+import ifrs.dev.model.Usuario;
+
+@Path(&quot;/anuncio&quot;)
+<span class="nc" id="L22">public class AnuncioWS {</span>
+    
+    @POST
+    @Path(&quot;/create&quot;)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Transactional
+    public Anuncio create(@FormParam(&quot;manga_id&quot;) Long manga_id,
+                            @FormParam(&quot;user_id&quot;) Long user_id,
+                            @FormParam(&quot;desc&quot;) String desc){
+<span class="nc" id="L31">        Anuncio anuncio = new Anuncio();</span>
+<span class="nc" id="L32">        anuncio.setDescricao(desc);</span>
+<span class="nc" id="L33">        Manga manga = Manga.findById(manga_id);</span>
+<span class="nc" id="L34">        anuncio.setManga(manga);</span>
+<span class="nc" id="L35">        anuncio.persistAndFlush();</span>
+                                
+<span class="nc" id="L37">        Usuario user = Usuario.findById(user_id);</span>
+<span class="nc bnc" id="L38" title="All 2 branches missed.">        if (user == null)</span>
+<span class="nc" id="L39">            throw new BadRequestException(&quot;User not found&quot;);</span>
+
+<span class="nc" id="L41">        user.addAnuncios(anuncio);</span>
+<span class="nc" id="L42">        user.persistAndFlush();</span>
+<span class="nc" id="L43">        return anuncio;</span>
+    }
+
+    @GET
+    @Path(&quot;/list&quot;)
+    @Produces(MediaType.APPLICATION_JSON)
+    public List&lt;Anuncio&gt; list(){
+<span class="nc" id="L50">        return Anuncio.listAll();</span>
+    }
+
+    @GET
+    @Path(&quot;/list/{id}&quot;)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Anuncio find(@PathParam(&quot;id&quot;) Long id){
+<span class="nc" id="L57">        return Anuncio.findById(id);</span>
+    }
+    @DELETE
+    @Path(&quot;/delete/{id}&quot;)
+    @Transactional
+    public void delete(@PathParam(&quot;id&quot;) Long id) {
+<span class="nc" id="L63">        System.out.println(&quot;entrou  path delet &quot;);</span>
+<span class="nc" id="L64">        Anuncio.deleteById(id);</span>
+<span class="nc" id="L65">        System.out.println(&quot;EXECUTOU delet &quot;);</span>
+<span class="nc" id="L66">    }</span>
+
+    @PUT
+    @Path(&quot;/update/{id}&quot;)
+    @Transactional
+    @Produces(MediaType.APPLICATION_JSON)
+    public Anuncio update(@PathParam(&quot;id&quot;) Long id, 
+                            @FormParam(&quot;desc&quot;) String desc){
+<span class="nc" id="L74">        Anuncio anuncio = Anuncio.findById(id);</span>
+<span class="nc bnc" id="L75" title="All 2 branches missed.">        if (desc != null) anuncio.setDescricao(desc);</span>
+<span class="nc" id="L76">        anuncio.persistAndFlush();</span>
+<span class="nc" id="L77">        return anuncio;                           </span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

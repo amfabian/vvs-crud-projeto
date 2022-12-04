@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UsuarioWS.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">quarkus-application</a> &gt; <a href="index.source.html" class="el_package">ifrs.dev.ws</a> &gt; <span class="el_source">UsuarioWS.java</span></div><h1>UsuarioWS.java</h1><pre class="source lang-java linenums">package ifrs.dev.ws;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+import javax.validation.constraints.Null;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+import ifrs.dev.model.Usuario;
+
+@Path(&quot;/usuario&quot;)
+<span class="fc" id="L21">public class UsuarioWS {</span>
+
+    @POST
+    @Path(&quot;/create&quot;)
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Transactional
+    public Usuario create (@FormParam(&quot;login&quot;) String login,
+                            @FormParam(&quot;password&quot;) String password,
+                            @FormParam(&quot;email&quot;) String email) {
+<span class="fc" id="L31">        Usuario usuario = new Usuario();</span>
+<span class="fc" id="L32">        usuario.setLogin(login);</span>
+<span class="fc" id="L33">        usuario.setEmail(email);</span>
+<span class="fc" id="L34">        usuario.setPassword(password);</span>
+<span class="fc" id="L35">        usuario.persistAndFlush();</span>
+<span class="fc" id="L36">        return usuario;    </span>
+    }
+
+    @GET
+    @Path(&quot;/list&quot;)
+    @Produces(MediaType.APPLICATION_JSON)
+    public List&lt;Usuario&gt; list(){
+<span class="fc" id="L43">        return Usuario.listAll();</span>
+    }
+    @GET
+    @Path(&quot;/list/{id}&quot;)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Usuario find(@PathParam(&quot;id&quot;) Long id){
+<span class="nc" id="L49">        return Usuario.findById(id);</span>
+    }
+
+    @DELETE
+    @Path(&quot;/delete/{id}&quot;)
+    @Transactional
+    public void delete(@PathParam(&quot;id&quot;) Long id) {
+<span class="nc" id="L56">        System.out.println(&quot;entrou  path delet &quot;);</span>
+<span class="nc" id="L57">        Usuario.deleteById(id);</span>
+<span class="nc" id="L58">        System.out.println(&quot;EXECUTOU delet &quot;);</span>
+<span class="nc" id="L59">    }</span>
+
+    @PUT
+    @Path(&quot;/update/{id}&quot;)
+    @Transactional
+    @Produces(MediaType.APPLICATION_JSON)
+    public Usuario update(@PathParam(&quot;id&quot;) Long id, @FormParam(&quot;login&quot;) String login,
+                            @FormParam(&quot;password&quot;) String password,
+                            @FormParam(&quot;email&quot;) String email){
+<span class="nc" id="L68">        Usuario usuario = Usuario.findById(id);</span>
+<span class="nc bnc" id="L69" title="All 2 branches missed.">        if (email != null) usuario.setEmail(email);</span>
+<span class="nc bnc" id="L70" title="All 2 branches missed.">        if (login != null) usuario.setLogin(login);</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">        if (password != null) usuario.setPassword(password);</span>
+<span class="nc" id="L72">        usuario.persistAndFlush();</span>
+<span class="nc" id="L73">        return usuario;                           </span>
+    }
+
+    @PUT //EXCLUSIVO DO USUARIO
+    @Path(&quot;/setAdmin/{id}&quot;)
+    @Transactional
+    @Produces(MediaType.APPLICATION_JSON)
+    public Usuario setAdmin(@PathParam(&quot;id&quot;) Long id){
+<span class="nc" id="L81">        Usuario usuario = Usuario.findById(id);</span>
+<span class="nc" id="L82">        usuario.setAdmin(true);</span>
+<span class="nc" id="L83">        usuario.persistAndFlush();</span>
+<span class="nc" id="L84">        return usuario;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

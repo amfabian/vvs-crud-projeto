@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="ws.UsuarioWSTest" time="0.46" tests="6" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="ws.AnuncioWSTest" time="44.13" tests="6" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -67,10 +67,123 @@
     <property name="java.class.version" value="61.0"/>
     <property name="jacoco-agent.destfile" value="/home/amfabian/dev/vvs-projeto/vvs-crud-projeto/target/jacoco-quarkus.exec"/>
   </properties>
-  <testcase name="testeUsuarioListEndpoint" classname="ws.UsuarioWSTest" time="0.03"/>
-  <testcase name="testHome" classname="ws.UsuarioWSTest" time="0.015"/>
-  <testcase name="testeUsuarioCreateEndpointWithAssert" classname="ws.UsuarioWSTest" time="0.311"/>
-  <testcase name="testErrorPath" classname="ws.UsuarioWSTest" time="0.011"/>
-  <testcase name="testeUsuarioListIDEndpoint" classname="ws.UsuarioWSTest" time="0.009"/>
-  <testcase name="testeUsuarioCreateEndpoint" classname="ws.UsuarioWSTest" time="0.072"/>
+  <testcase name="testHome" classname="ws.AnuncioWSTest" time="1.206">
+    <system-out><![CDATA[2022-12-04 15:10:06,977 INFO  [org.tes.doc.DockerClientProviderStrategy] (build-26) Loaded org.testcontainers.dockerclient.UnixSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2022-12-04 15:10:07,896 INFO  [org.tes.doc.DockerClientProviderStrategy] (build-26) Found Docker environment with local Unix socket (unix:///var/run/docker.sock)
+2022-12-04 15:10:07,898 INFO  [org.tes.DockerClientFactory] (build-26) Docker host IP address is localhost
+2022-12-04 15:10:07,917 INFO  [org.tes.DockerClientFactory] (build-26) Connected to docker: 
+  Server Version: 20.10.12
+  API Version: 1.41
+  Operating System: Ubuntu 22.04.1 LTS
+  Total Memory: 13925 MB
+2022-12-04 15:10:07,931 INFO  [org.tes.uti.ImageNameSubstitutor] (build-26) Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2022-12-04 15:10:07,935 INFO  [org.tes.DockerClientFactory] (build-26) Checking the system...
+2022-12-04 15:10:07,936 INFO  [org.tes.DockerClientFactory] (build-26) ✔︎ Docker server version should be at least 1.6.0
+2022-12-04 15:10:08,362 INFO  [🐳 .io/.0]] (build-26) Creating container for image: docker.io/mysql:8.0
+2022-12-04 15:10:08,502 WARN  [🐳 .io/.0]] (build-26) Reuse was requested but the environment does not support the reuse of containers
+To enable reuse of containers, you must set 'testcontainers.reuse.enable=true' in a file located at /home/amfabian/.testcontainers.properties
+2022-12-04 15:10:08,510 INFO  [🐳 .3.4]] (build-26) Creating container for image: testcontainers/ryuk:0.3.4
+2022-12-04 15:10:08,983 INFO  [🐳 .3.4]] (build-26) Container testcontainers/ryuk:0.3.4 is starting: 58cb03251c96dc9014fa7632414138919468559c9b4125a85df846c41a0b8f2f
+2022-12-04 15:10:09,996 INFO  [🐳 .3.4]] (build-26) Container testcontainers/ryuk:0.3.4 started in PT1.492570686S
+2022-12-04 15:10:10,412 INFO  [🐳 .io/.0]] (build-26) Container docker.io/mysql:8.0 is starting: e6f91e92b268b6df6cd728e89c72e72877b04702a0fcefb38dd2c8532d7dc5ec
+2022-12-04 15:10:11,036 INFO  [🐳 .io/.0]] (build-26) Waiting for database connection to become available at jdbc:mysql://localhost:49174/quarkus using query 'SELECT 1'
+2022-12-04 15:10:43,952 INFO  [🐳 .io/.0]] (build-26) Container is started (JDBC URL: jdbc:mysql://localhost:49174/quarkus)
+2022-12-04 15:10:43,952 INFO  [🐳 .io/.0]] (build-26) Container docker.io/mysql:8.0 started in PT36.003831028S
+2022-12-04 15:10:43,953 INFO  [io.qua.dev.mys.dep.MySQLDevServicesProcessor] (build-26) Dev Services for MySQL started.
+2022-12-04 15:10:43,955 INFO  [io.qua.dat.dep.dev.DevServicesDatasourceProcessor] (build-26) Dev Services for the default datasource (mysql) started.
+2022-12-04 15:10:43,957 INFO  [io.qua.hib.orm.dep.HibernateOrmProcessor] (build-7) Setting quarkus.hibernate-orm.database.generation=drop-and-create to initialize Dev Services managed database
+2022-12-04 15:10:45,696 WARN  [org.hib.too.sch.int.ExceptionHandlerLoggedImpl] (JPA Startup Thread) GenerationTarget encountered exception accepting command : Error executing DDL "alter table Anuncio drop foreign key FKpqm0n9dwti0cay60818ldl48s" via JDBC Statement: org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table Anuncio drop foreign key FKpqm0n9dwti0cay60818ldl48s" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlString(SchemaDropperImpl.java:387)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlStrings(SchemaDropperImpl.java:371)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applyConstraintDropping(SchemaDropperImpl.java:341)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:235)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:156)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:128)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:114)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:157)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:85)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:335)
+	at io.quarkus.hibernate.orm.runtime.boot.FastBootEntityManagerFactoryBuilder.build(FastBootEntityManagerFactoryBuilder.java:74)
+	at io.quarkus.hibernate.orm.runtime.FastBootHibernatePersistenceProvider.createEntityManagerFactory(FastBootHibernatePersistenceProvider.java:72)
+	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:80)
+	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
+	at io.quarkus.hibernate.orm.runtime.JPAConfig$LazyPersistenceUnit.get(JPAConfig.java:167)
+	at io.quarkus.hibernate.orm.runtime.JPAConfig$1.run(JPAConfig.java:68)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.sql.SQLSyntaxErrorException: Table 'quarkus.Anuncio' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:763)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648)
+	at io.agroal.pool.wrapper.StatementWrapper.execute(StatementWrapper.java:235)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 17 more
+
+2022-12-04 15:10:45,701 WARN  [org.hib.too.sch.int.ExceptionHandlerLoggedImpl] (JPA Startup Thread) GenerationTarget encountered exception accepting command : Error executing DDL "alter table Anuncio drop foreign key FK2wady8j7df8s3rco3b45whd6w" via JDBC Statement: org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table Anuncio drop foreign key FK2wady8j7df8s3rco3b45whd6w" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlString(SchemaDropperImpl.java:387)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlStrings(SchemaDropperImpl.java:371)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applyConstraintDropping(SchemaDropperImpl.java:341)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:235)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:156)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:128)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:114)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:157)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:85)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:335)
+	at io.quarkus.hibernate.orm.runtime.boot.FastBootEntityManagerFactoryBuilder.build(FastBootEntityManagerFactoryBuilder.java:74)
+	at io.quarkus.hibernate.orm.runtime.FastBootHibernatePersistenceProvider.createEntityManagerFactory(FastBootHibernatePersistenceProvider.java:72)
+	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:80)
+	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
+	at io.quarkus.hibernate.orm.runtime.JPAConfig$LazyPersistenceUnit.get(JPAConfig.java:167)
+	at io.quarkus.hibernate.orm.runtime.JPAConfig$1.run(JPAConfig.java:68)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.sql.SQLSyntaxErrorException: Table 'quarkus.Anuncio' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:763)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648)
+	at io.agroal.pool.wrapper.StatementWrapper.execute(StatementWrapper.java:235)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 17 more
+
+2022-12-04 15:10:45,705 WARN  [org.hib.too.sch.int.ExceptionHandlerLoggedImpl] (JPA Startup Thread) GenerationTarget encountered exception accepting command : Error executing DDL "alter table Mensagem drop foreign key FK6xkbaq1ybm3oxxymawmeks12a" via JDBC Statement: org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table Mensagem drop foreign key FK6xkbaq1ybm3oxxymawmeks12a" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlString(SchemaDropperImpl.java:387)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlStrings(SchemaDropperImpl.java:371)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applyConstraintDropping(SchemaDropperImpl.java:341)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:235)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:156)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:128)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:114)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:157)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:85)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:335)
+	at io.quarkus.hibernate.orm.runtime.boot.FastBootEntityManagerFactoryBuilder.build(FastBootEntityManagerFactoryBuilder.java:74)
+	at io.quarkus.hibernate.orm.runtime.FastBootHibernatePersistenceProvider.createEntityManagerFactory(FastBootHibernatePersistenceProvider.java:72)
+	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:80)
+	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
+	at io.quarkus.hibernate.orm.runtime.JPAConfig$LazyPersistenceUnit.get(JPAConfig.java:167)
+	at io.quarkus.hibernate.orm.runtime.JPAConfig$1.run(JPAConfig.java:68)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.sql.SQLSyntaxErrorException: Table 'quarkus.Mensagem' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:763)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648)
+	at io.agroal.pool.wrapper.StatementWrapper.execute(StatementWrapper.java:235)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 17 more
+
+2022-12-04 15:10:47,493 INFO  [io.quarkus] (main) pw2-crud-projeto 1.0.0-SNAPSHOT on JVM (powered by Quarkus 2.14.2.Final) started in 41.745s. Listening on: http://localhost:8081
+2022-12-04 15:10:47,493 INFO  [io.quarkus] (main) Profile test activated. 
+2022-12-04 15:10:47,493 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, hibernate-orm-panache, jacoco, jdbc-mysql, narayana-jta, resteasy, resteasy-jackson, smallrye-context-propagation, vertx]
+]]></system-out>
+  </testcase>
+  <testcase name="testeAnuncioListEndpoint" classname="ws.AnuncioWSTest" time="0.263"/>
+  <testcase name="testeAnuncioListIDEndpoint" classname="ws.AnuncioWSTest" time="0.032"/>
+  <testcase name="testeAnuncioCreateEndpointWithAssert" classname="ws.AnuncioWSTest" time="0.003"/>
+  <testcase name="testeAnuncioCreateEndpoint" classname="ws.AnuncioWSTest" time="0.002"/>
+  <testcase name="testErrorPath" classname="ws.AnuncioWSTest" time="0.022"/>
 </testsuite>

@@ -19,7 +19,7 @@ import ifrs.dev.model.Manga;
 import ifrs.dev.model.Usuario;
 
 @Path(&quot;/anuncio&quot;)
-<span class="nc" id="L22">public class AnuncioWS {</span>
+<span class="fc" id="L22">public class AnuncioWS {</span>
     
     @POST
     @Path(&quot;/create&quot;)
@@ -47,7 +47,7 @@ import ifrs.dev.model.Usuario;
     @Path(&quot;/list&quot;)
     @Produces(MediaType.APPLICATION_JSON)
     public List&lt;Anuncio&gt; list(){
-<span class="nc" id="L50">        return Anuncio.listAll();</span>
+<span class="fc" id="L50">        return Anuncio.listAll();</span>
     }
 
     @GET

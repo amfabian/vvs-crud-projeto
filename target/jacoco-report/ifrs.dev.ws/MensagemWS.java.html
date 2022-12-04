@@ -18,7 +18,7 @@ import ifrs.dev.model.Anuncio;
 import ifrs.dev.model.Mensagem;
 
 @Path(&quot;/mensagem&quot;)
-<span class="nc" id="L21">public class MensagemWS {</span>
+<span class="fc" id="L21">public class MensagemWS {</span>
 
     @POST
     @Path(&quot;/create&quot;)
@@ -45,7 +45,7 @@ import ifrs.dev.model.Mensagem;
     @Path(&quot;/list&quot;)
     @Produces(MediaType.APPLICATION_JSON)
     public List&lt;Mensagem&gt; list(){
-<span class="nc" id="L48">        return Mensagem.listAll();</span>
+<span class="fc" id="L48">        return Mensagem.listAll();</span>
     }
 
     @GET

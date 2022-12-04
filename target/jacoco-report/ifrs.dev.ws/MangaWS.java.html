@@ -16,7 +16,7 @@ import javax.ws.rs.core.MediaType;
 import ifrs.dev.model.Manga;
 
 @Path(&quot;/manga&quot;)
-<span class="nc" id="L19">public class MangaWS {</span>
+<span class="fc" id="L19">public class MangaWS {</span>
 
     @POST
     @Path(&quot;/create&quot;)
@@ -42,7 +42,7 @@ import ifrs.dev.model.Manga;
     @Path(&quot;/list&quot;)
     @Produces(MediaType.APPLICATION_JSON)
     public List&lt;Manga&gt; list(){
-<span class="nc" id="L45">        return Manga.listAll();</span>
+<span class="fc" id="L45">        return Manga.listAll();</span>
     }
 
     @GET

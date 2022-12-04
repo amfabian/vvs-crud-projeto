@@ -5,6 +5,6 @@ quarkus-application,ifrs.dev.model,Anuncio,34,3,0,0,14,2,9,1,9,1
 quarkus-application,ifrs.dev.model,Usuario,14,30,0,0,6,13,3,9,3,9
 quarkus-application,ifrs.dev.ws,AnuncioWS,61,5,4,0,20,2,6,2,4,2
 quarkus-application,ifrs.dev.ws,UsuarioWS,48,22,6,0,15,8,7,3,4,3
-quarkus-application,ifrs.dev.ws,MensagemWS,62,0,4,0,21,0,8,0,6,0
-quarkus-application,ifrs.dev.ws,MangaWS,55,0,2,0,19,0,7,0,6,0
+quarkus-application,ifrs.dev.ws,MensagemWS,57,5,4,0,19,2,6,2,4,2
+quarkus-application,ifrs.dev.ws,MangaWS,50,5,2,0,17,2,5,2,4,2
 quarkus-application,ifrs.dev,FakeRepository,5,0,0,0,1,0,1,0,1,0

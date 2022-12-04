@@ -75,7 +75,7 @@ public class UsuarioWSTest {
     }
 
     @Test
-    @Order(5)
+    @Order(6)
     @DisplayName("Teste 6 = Post CREATE")
     void testeUsuarioListIDEndpoint(){
 

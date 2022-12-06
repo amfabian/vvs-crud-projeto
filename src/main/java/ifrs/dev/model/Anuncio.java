@@ -26,6 +26,8 @@ public class Anuncio extends PanacheEntity {
     private List<Mensagem> mensagens; //Anuncio possui uma lista de Mensagens One To Many
     
     public Anuncio() {
+    // construtor 
+
     }
    
     public String getAval() {

@@ -1,6 +1,7 @@
 package ifrs.dev.ws;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.transaction.Transactional;
 import javax.ws.rs.BadRequestException;
@@ -20,7 +21,8 @@ import ifrs.dev.model.Usuario;
 
 @Path("/anuncio")
 public class AnuncioWS {
-    
+    private static final Logger LOGGER = Logger.getLogger(AnuncioWS.class.getName()); 
+
     @POST
     @Path("/create")
     @Produces(MediaType.APPLICATION_JSON)
@@ -40,6 +42,7 @@ public class AnuncioWS {
 
         user.addAnuncios(anuncio);
         user.persistAndFlush();
+        LOGGER.info("CREATE Anuncio");
         return anuncio;
     }
 
@@ -60,9 +63,8 @@ public class AnuncioWS {
     @Path("/delete/{id}")
     @Transactional
     public void delete(@PathParam("id") Long id) {
-        System.out.println("entrou  path delet ");
+        LOGGER.info("DELETE Anuncio");
         Anuncio.deleteById(id);
-        System.out.println("EXECUTOU delet ");
     }
 
     @PUT
@@ -74,6 +76,7 @@ public class AnuncioWS {
         Anuncio anuncio = Anuncio.findById(id);
         if (desc != null) anuncio.setDescricao(desc);
         anuncio.persistAndFlush();
+        LOGGER.info("UPDATE Anuncio");
         return anuncio;                           
     }
 }

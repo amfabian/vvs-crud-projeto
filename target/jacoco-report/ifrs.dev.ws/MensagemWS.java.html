@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MensagemWS.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">quarkus-application</a> &gt; <a href="index.source.html" class="el_package">ifrs.dev.ws</a> &gt; <span class="el_source">MensagemWS.java</span></div><h1>MensagemWS.java</h1><pre class="source lang-java linenums">package ifrs.dev.ws;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.transaction.Transactional;
 import javax.ws.rs.BadRequestException;
@@ -18,7 +19,8 @@ import ifrs.dev.model.Anuncio;
 import ifrs.dev.model.Mensagem;
 
 @Path(&quot;/mensagem&quot;)
-<span class="fc" id="L21">public class MensagemWS {</span>
+<span class="fc" id="L22">public class MensagemWS {</span>
+<span class="fc" id="L23">    private static final Logger LOGGER = Logger.getLogger(MensagemWS.class.getName()); </span>
 
     @POST
     @Path(&quot;/create&quot;)
@@ -27,42 +29,42 @@ import ifrs.dev.model.Mensagem;
     public Mensagem create(@FormParam(&quot;anuncio_id&quot;) Long anuncio_id,
                             @FormParam(&quot;texto&quot;) String texto,
                             @FormParam(&quot;user_id&quot;) String user_id){
-<span class="nc" id="L30">        Mensagem msg = new Mensagem();</span>
-<span class="nc" id="L31">        msg.setTexto(texto);</span>
-<span class="nc" id="L32">        msg.setUser_id(user_id);</span>
-<span class="nc" id="L33">        msg.persistAndFlush();</span>
+<span class="nc" id="L32">        Mensagem msg = new Mensagem();</span>
+<span class="nc" id="L33">        msg.setTexto(texto);</span>
+<span class="nc" id="L34">        msg.setUser_id(user_id);</span>
+<span class="nc" id="L35">        msg.persistAndFlush();</span>
 
-<span class="nc" id="L35">        Anuncio anuncio = Anuncio.findById(anuncio_id);</span>
-<span class="nc bnc" id="L36" title="All 2 branches missed.">        if(anuncio == null)</span>
-<span class="nc" id="L37">            throw new BadRequestException(&quot;Anuncio not found&quot;);</span>
+<span class="nc" id="L37">        Anuncio anuncio = Anuncio.findById(anuncio_id);</span>
+<span class="nc bnc" id="L38" title="All 2 branches missed.">        if(anuncio == null)</span>
+<span class="nc" id="L39">            throw new BadRequestException(&quot;Anuncio not found&quot;);</span>
         
-<span class="nc" id="L39">        anuncio.addMensagem(msg);</span>
-<span class="nc" id="L40">        anuncio.persistAndFlush();</span>
-<span class="nc" id="L41">        return msg;                        </span>
+<span class="nc" id="L41">        anuncio.addMensagem(msg);</span>
+<span class="nc" id="L42">        anuncio.persistAndFlush();</span>
+<span class="nc" id="L43">        LOGGER.info(&quot;CREATE Mensagem&quot;);</span>
+<span class="nc" id="L44">        return msg;                        </span>
     }
 
     @GET
     @Path(&quot;/list&quot;)
     @Produces(MediaType.APPLICATION_JSON)
     public List&lt;Mensagem&gt; list(){
-<span class="fc" id="L48">        return Mensagem.listAll();</span>
+<span class="fc" id="L51">        return Mensagem.listAll();</span>
     }
 
     @GET
     @Path(&quot;/list/{id}&quot;)
     @Produces(MediaType.APPLICATION_JSON)
     public Mensagem find(@PathParam(&quot;id&quot;) Long id){
-<span class="nc" id="L55">        return Mensagem.findById(id);</span>
+<span class="nc" id="L58">        return Mensagem.findById(id);</span>
     }
 
     @DELETE
     @Path(&quot;/delete/{id}&quot;)
     @Transactional
     public void delete(@PathParam(&quot;id&quot;) Long id) {
-<span class="nc" id="L62">        System.out.println(&quot;entrou  path delet &quot;);</span>
-<span class="nc" id="L63">        Mensagem.deleteById(id);</span>
-<span class="nc" id="L64">        System.out.println(&quot;EXECUTOU delet &quot;);</span>
-<span class="nc" id="L65">    }</span>
+<span class="nc" id="L65">        LOGGER.info(&quot;DELETE Mensagem&quot;);</span>
+<span class="nc" id="L66">        Mensagem.deleteById(id);</span>
+<span class="nc" id="L67">    }</span>
     //eh necessario ter um update?
     @PUT
     @Path(&quot;/update/{id}&quot;)
@@ -70,10 +72,11 @@ import ifrs.dev.model.Mensagem;
     @Produces(MediaType.APPLICATION_JSON)
     public Mensagem update(@PathParam(&quot;id&quot;) Long id, 
                             @FormParam(&quot;texto&quot;) String texto){
-<span class="nc" id="L73">        Mensagem mensagem = Mensagem.findById(id);</span>
-<span class="nc bnc" id="L74" title="All 2 branches missed.">        if (texto != null) mensagem.setTexto(texto);</span>
-<span class="nc" id="L75">        mensagem.persistAndFlush();</span>
-<span class="nc" id="L76">        return mensagem;                           </span>
+<span class="nc" id="L75">        Mensagem mensagem = Mensagem.findById(id);</span>
+<span class="nc bnc" id="L76" title="All 2 branches missed.">        if (texto != null) mensagem.setTexto(texto);</span>
+<span class="nc" id="L77">        mensagem.persistAndFlush();</span>
+<span class="nc" id="L78">        LOGGER.info(&quot;UPDATE Mensagem&quot;);</span>
+<span class="nc" id="L79">        return mensagem;                           </span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

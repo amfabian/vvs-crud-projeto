@@ -57,7 +57,6 @@ public class UsuarioTest {
     @DisplayName("Teste com Panache no model Usuario")
     public void testUsuarioDelete(){
         PanacheMock.mock(Usuario.class);
-        Usuario u = new Usuario();
         Assertions.assertEquals(false, Usuario.deleteById(2L));
     }
 
@@ -68,10 +67,7 @@ public class UsuarioTest {
         PanacheMock.mock(Usuario.class);
         Usuario u = new Usuario();
         u.setAdmin(false);
-        Anuncio anuncio = new Anuncio();
         List<Anuncio> list = new ArrayList<>();
-       // list.add(anuncio);
-        //u.addAnuncios(anuncio);
         u.setAnuncios(list);
         Assertions.assertSame(u, u);
       

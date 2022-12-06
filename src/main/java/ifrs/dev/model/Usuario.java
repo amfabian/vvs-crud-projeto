@@ -24,6 +24,7 @@ public class Usuario extends PanacheEntity {
 
     //Contrutor e Getters e Setters
     public Usuario() {
+        // Construtor
     }
     public String getLogin() { 
         return login;

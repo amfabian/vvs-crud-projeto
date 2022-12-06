@@ -1,6 +1,7 @@
 package ifrs.dev.ws;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.transaction.Transactional;
 import javax.ws.rs.DELETE;
@@ -17,6 +18,7 @@ import ifrs.dev.model.Manga;
 
 @Path("/manga")
 public class MangaWS {
+    private static final Logger LOGGER = Logger.getLogger(MangaWS.class.getName()); 
 
     @POST
     @Path("/create")
@@ -34,6 +36,7 @@ public class MangaWS {
         manga.setUrl(url);
         manga.setChapters(chapters);
         manga.persist();
+        LOGGER.info("CREATE Manga");
         return manga;
     }
     
@@ -56,9 +59,8 @@ public class MangaWS {
     @Path("/delete/{id}")
     @Transactional
     public void delete(@PathParam("id") Long id) {
-        System.out.println("entrou  path delet ");
+        LOGGER.info("DELETE Manga");
         Manga.deleteById(id);
-        System.out.println("EXECUTOU delet ");
     }
 
     @PUT
@@ -70,6 +72,7 @@ public class MangaWS {
         Manga manga = Manga.findById(id);
         if (mal_id != null) manga.setMal_id(mal_id);
         manga.persistAndFlush();
+        LOGGER.info("UPDATE Manga");
         return manga;                           
     }
 }

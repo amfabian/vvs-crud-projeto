@@ -1,9 +1,9 @@
 package ifrs.dev.ws;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.transaction.Transactional;
-import javax.validation.constraints.Null;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
@@ -19,6 +19,7 @@ import ifrs.dev.model.Usuario;
 
 @Path("/usuario")
 public class UsuarioWS {
+    private static final Logger LOGGER = Logger.getLogger(UsuarioWS.class.getName()); 
 
     @POST
     @Path("/create")
@@ -33,6 +34,7 @@ public class UsuarioWS {
         usuario.setEmail(email);
         usuario.setPassword(password);
         usuario.persistAndFlush();
+        LOGGER.info("CREATE Usuario");
         return usuario;    
     }
 
@@ -53,9 +55,8 @@ public class UsuarioWS {
     @Path("/delete/{id}")
     @Transactional
     public void delete(@PathParam("id") Long id) {
-        System.out.println("entrou  path delet ");
+        LOGGER.info("DELETE Usuario");
         Usuario.deleteById(id);
-        System.out.println("EXECUTOU delet ");
     }
 
     @PUT
@@ -70,6 +71,7 @@ public class UsuarioWS {
         if (login != null) usuario.setLogin(login);
         if (password != null) usuario.setPassword(password);
         usuario.persistAndFlush();
+        LOGGER.info("UPDATE Usuario");
         return usuario;                           
     }
 
@@ -81,6 +83,7 @@ public class UsuarioWS {
         Usuario usuario = Usuario.findById(id);
         usuario.setAdmin(true);
         usuario.persistAndFlush();
+        LOGGER.info("SET ADMIN Usuario");
         return usuario;
     }
 

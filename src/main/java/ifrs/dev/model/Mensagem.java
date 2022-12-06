@@ -9,6 +9,7 @@ public class Mensagem extends PanacheEntity {
     private String user_id;
     
     public Mensagem() {
+    // construtor 
     }
     public String getTexto() {
         return texto;

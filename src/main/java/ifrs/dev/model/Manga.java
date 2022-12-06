@@ -14,6 +14,8 @@ public class Manga extends PanacheEntity{
     private String chapters;
     
     public Manga() {
+    // construtor 
+
     }
 
     public String getMal_id() {

@@ -41,7 +41,6 @@ public class AnuncioTest {
         Anuncio a = new Anuncio();
         a.setManga(new Manga());
         a.getManga();
-        
         Assertions.assertNotNull(Anuncio.listAll());
     }
     @Test
@@ -51,8 +50,6 @@ public class AnuncioTest {
         PanacheMock.mock(Anuncio.class);
         Anuncio a = new Anuncio();
         List<Mensagem> list = new ArrayList<>();
-       // list.add(anuncio);
-        //u.addAnuncios(anuncio);
         a.setMensagens(list);
         a.getMensagens();
         Assertions.assertSame(a, a);

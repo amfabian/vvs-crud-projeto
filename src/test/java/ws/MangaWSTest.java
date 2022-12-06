@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 import io.quarkus.test.junit.QuarkusTest;
-import static org.hamcrest.CoreMatchers.containsString;
 
 @QuarkusTest
 public class MangaWSTest {
@@ -17,9 +16,7 @@ public class MangaWSTest {
             .when().get()
             .then()
                 .statusCode(200);
-
     }
-
 
     @Test
     @Order(2)
@@ -41,7 +38,6 @@ public class MangaWSTest {
             .when().get("/test")
             .then()
                 .statusCode(404);
-
     }
 
     @Test

@@ -1,6 +1,7 @@
 package ifrs.dev.ws;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.transaction.Transactional;
 import javax.ws.rs.BadRequestException;
@@ -19,6 +20,7 @@ import ifrs.dev.model.Mensagem;
 
 @Path("/mensagem")
 public class MensagemWS {
+    private static final Logger LOGGER = Logger.getLogger(MensagemWS.class.getName()); 
 
     @POST
     @Path("/create")
@@ -38,6 +40,7 @@ public class MensagemWS {
         
         anuncio.addMensagem(msg);
         anuncio.persistAndFlush();
+        LOGGER.info("CREATE Mensagem");
         return msg;                        
     }
 
@@ -59,9 +62,8 @@ public class MensagemWS {
     @Path("/delete/{id}")
     @Transactional
     public void delete(@PathParam("id") Long id) {
-        System.out.println("entrou  path delet ");
+        LOGGER.info("DELETE Mensagem");
         Mensagem.deleteById(id);
-        System.out.println("EXECUTOU delet ");
     }
     //eh necessario ter um update?
     @PUT
@@ -73,6 +75,7 @@ public class MensagemWS {
         Mensagem mensagem = Mensagem.findById(id);
         if (texto != null) mensagem.setTexto(texto);
         mensagem.persistAndFlush();
+        LOGGER.info("UPDATE Mensagem");
         return mensagem;                           
     }
 }

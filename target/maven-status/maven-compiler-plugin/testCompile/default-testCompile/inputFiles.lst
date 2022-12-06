@@ -1,4 +1,8 @@
 /home/amfabian/dev/vvs-projeto/vvs-crud-projeto/src/test/java/ws/AnuncioWSTest.java
 /home/amfabian/dev/vvs-projeto/vvs-crud-projeto/src/test/java/ws/MensagemWSTest.java
 /home/amfabian/dev/vvs-projeto/vvs-crud-projeto/src/test/java/ws/MangaWSTest.java
+/home/amfabian/dev/vvs-projeto/vvs-crud-projeto/src/test/java/model/AnuncioTest.java
 /home/amfabian/dev/vvs-projeto/vvs-crud-projeto/src/test/java/ws/UsuarioWSTest.java
+/home/amfabian/dev/vvs-projeto/vvs-crud-projeto/src/test/java/model/MangaTest.java
+/home/amfabian/dev/vvs-projeto/vvs-crud-projeto/src/test/java/model/MensagemTest.java
+/home/amfabian/dev/vvs-projeto/vvs-crud-projeto/src/test/java/model/UsuarioTest.java

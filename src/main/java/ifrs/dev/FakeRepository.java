@@ -1,3 +1,4 @@
+package ifrs.dev;
 import javax.enterprise.context.ApplicationScoped;
 
 import ifrs.dev.model.Usuario;

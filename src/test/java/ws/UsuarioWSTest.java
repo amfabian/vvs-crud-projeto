@@ -1,15 +1,29 @@
 package ws;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+
+import com.google.inject.Inject;
+
+import ifrs.dev.model.Usuario;
+import ifrs.dev.ws.UsuarioWS;
+
 import static io.restassured.RestAssured.given;
+
+import io.quarkus.panache.mock.PanacheMock;
 import io.quarkus.test.junit.QuarkusTest;
+import io.quarkus.test.junit.mockito.InjectMock;
+import static org.mockito.Mockito.when;
+
 import static org.hamcrest.CoreMatchers.containsString;
 
 
 @QuarkusTest
 public class UsuarioWSTest {
+
 
     @Test
     @Order(1)
@@ -74,16 +88,40 @@ public class UsuarioWSTest {
                 .assertThat().body(containsString("teste@mail.com"));
     }
 
+
     @Test
     @Order(6)
-    @DisplayName("Teste 6 = Post CREATE")
+    @DisplayName("Teste 6 = Post List")
     void testeUsuarioListIDEndpoint(){
-
+       
         given()
             .when().get("/user/1")
             .then()
-                .statusCode(404);
+            .assertThat().body(containsString(""));
     }
 
+    @Test
+    @Order(6)
+    @DisplayName("Teste 6 = Post List")
+    void testeUsuarioListIDEndpoint2(){
+       
+        given()
+            .when().get("/user/1")
+            .then()
+            .statusCode(404);
+    }
+
+    @Test
+    @Order(7)
+    @DisplayName("Teste 6 = Post List")
+    void testeUsuarioListIDEndpoint3(){
+       
+        given()
+            .when().get("/user/list/1")
+            .then()
+            .statusCode(404);
+    }
+
+   
     
 }

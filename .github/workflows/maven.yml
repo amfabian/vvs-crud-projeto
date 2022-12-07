@@ -41,7 +41,7 @@ jobs:
       shell: bash
     
     - name: Run Docker Compose
-      run: docker-compose up -d
+      run: docker ps
 
     - name: Build with Maven
       run: |       

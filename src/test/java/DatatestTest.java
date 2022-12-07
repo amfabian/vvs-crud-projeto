@@ -57,7 +57,7 @@ public class DatatestTest {
   
     @Test
   public void home() {
-    driver.get("http://0.0.0.0:8090/");
+    driver.get("http://0.0.0.0:8084/");
     driver.manage().window().setSize(new Dimension(1920, 1016));
     driver.findElement(By.cssSelector("h1")).click();
     driver.findElement(By.cssSelector("h1")).click();

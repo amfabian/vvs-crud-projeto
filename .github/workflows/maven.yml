@@ -44,4 +44,7 @@ jobs:
       run: docker-compose up -d
 
     - name: Build with Maven
-      run: mvn package -Dquarkus.package.type=uber-jar
+      run: |       
+        echo "${{ secrets.DOCKERHUB_PS }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+        ./mvnw clean package -Dquarkus.container-image.push=true -Dquarkus.jib.base-registry-password=${{ secrets.DOCKERHUB_PS }}
+    

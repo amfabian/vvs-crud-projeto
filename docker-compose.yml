@@ -1,0 +1,39 @@
+version: "3.9"
+volumes:
+  database:
+services:
+  db:
+    image: mysql:latest
+    container_name: hibernate
+    ports:
+      - 3306:3306
+    volumes:
+      - database:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=hibernate
+      - MYSQL_DATABASE=hibernate
+      - MYSQL_USER=hibernate
+      - MYSQL_PASSWORD=hibernate
+    restart: always
+  crud:
+    image: amfabian/vvs-crud
+    container_name: crud
+    ports:
+      - "8084:8084"
+    depends_on:
+      - db
+  api:
+    image: amfabian/vvs-manga-api
+    container_name: api
+    ports:
+      - "8083:8083"
+  auth:
+    image: amfabian/vvs-auth-user
+    container_name: authUser
+    ports:
+      - "8082:8082"
+  bff:
+    image: amfabian/vvs-bff
+    container_name: bff
+    ports:
+      - "8081:8081"

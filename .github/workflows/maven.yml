@@ -40,8 +40,8 @@ jobs:
       run: sleep 15s
       shell: bash
     
-    - name: Run Jar
-      run: java -jar *-runner.jar > yourservice.log 2>&1
+    - name: Run Docker Compose
+      run: docker-compose up -d
 
     - name: Build with Maven
       run: mvn package -Dquarkus.package.type=uber-jar

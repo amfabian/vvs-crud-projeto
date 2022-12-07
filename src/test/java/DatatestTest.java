@@ -55,7 +55,7 @@ public class DatatestTest {
     driver.quit();
   }
   
-    @Test
+ /*    @Test
   public void home() {
     driver.get("http://0.0.0.0:8084/");
     driver.manage().window().setSize(new Dimension(1920, 1016));
@@ -70,7 +70,7 @@ public class DatatestTest {
       List<WebElement> elements = driver.findElements(By.cssSelector("h1"));
       assertTrue(elements.get(0).getText().contains("Quarkus"));
     }
-  }  
+  }   */
 
   @Test
   public void userLogin(){

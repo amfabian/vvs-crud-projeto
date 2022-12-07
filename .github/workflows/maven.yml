@@ -28,9 +28,6 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: Run Mysql
-      run: docker run --name bmysql --rm -e MYSQL_ROOT_PASSWORD=hibernate -e MYSQL_USER=hibernate -e MYSQL_PASSWORD=hibernate -e MYSQL_DATABASE=hibernate -p 3306:3306 -d -it mysql:8.0
-
     - name:  Install Google Chrome # Using shell script to install Google Chrome
       run: |
         chmod +x ./InstallChrome.sh
